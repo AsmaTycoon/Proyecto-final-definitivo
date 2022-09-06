@@ -48,7 +48,7 @@ public class CSkills {
     }
     
     @GetMapping("/detail/{id}")
-    public ResponseEntity<Skills> getById(@PathVariable("id"),int id){
+    public ResponseEntity<Skills> getById(@PathVariable("id") int id){
         if (!sSkills.existsById(id)){
             return new ResponseEntity(new Mensaje("No existe"), HttpStatus.NOT_FOUND);
         }
@@ -57,7 +57,7 @@ public class CSkills {
     }
     
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(@PathVariable("id"), int id, @RequestBody dtoSkills dtoskills){
+    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoSkills dtoskills){
         if(!sSkills.existsById(id))
             return new ResponseEntity(new Mensaje("El ID no existe"),HttpStatus.BAD_REQUEST);
         
@@ -76,7 +76,7 @@ public class CSkills {
     }
     
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id"), int id){
+    public ResponseEntity<?> delete(@PathVariable("id") int id){
         if(!sSkills.existsById(id))
             return new ResponseEntity(new Mensaje("El ID no existe"),HttpStatus.BAD_REQUEST);
         
