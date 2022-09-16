@@ -11,9 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -54,5 +56,31 @@ public class CBanner {
         return new ResponseEntity(banner, HttpStatus.OK);
     }
     
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> update(@PathVariable("id")int id, @RequestBody dtoBanner dtobanner){
+        if(!sBanner.existsById(id))
+            return new ResponseEntity(new Mensaje("El Id no existe"), HttpStatus.BAD_REQUEST);
+        
+        if(sBanner.existsByImagenB(dtobanner.getImagenB()) && sBanner.getByImagenB(dtobanner.getImagenB()).get().getId() !=id)
+            return new ResponseEntity(new Mensaje("Esa URL ya existe"), HttpStatus.BAD_REQUEST);
+        
+        if(StringUtils.isBlank(dtobanner.getImagenB()))
+            return new ResponseEntity(new Mensaje("La URL es obligatoria"), HttpStatus.BAD_REQUEST);
+        
+        Banner banner = sBanner.getOne(id).get();
+        banner.setImagenB(dtobanner.getImagenB());
+        
+        sBanner.save(banner);
+        return new ResponseEntity(new Mensaje("URL banner actualizada"), HttpStatus.OK);
+    }
     
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id")int id){
+        if(!sBanner.existsById(id))
+            return new ResponseEntity(new Mensaje("El Id no existe"), HttpStatus.BAD_REQUEST);
+        
+        sBanner.delete(id);
+        
+        return new ResponseEntity(new Mensaje("Banner eliminado"), HttpStatus.OK);
+    }
 }
