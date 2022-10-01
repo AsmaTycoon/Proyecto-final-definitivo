@@ -7,7 +7,7 @@ public class dtoProyectos {
     @NotBlank
     private String nombreProyecto;
     @NotBlank
-    private String descripcioP;
+    private String descripcionP;
     private String imagenP;
     
     //Constructor
@@ -15,9 +15,9 @@ public class dtoProyectos {
     public dtoProyectos() {
     }
 
-    public dtoProyectos(String nombreProyecto, String descripcioP, String imagenP) {
+    public dtoProyectos(String nombreProyecto, String descripcionP, String imagenP) {
         this.nombreProyecto = nombreProyecto;
-        this.descripcioP = descripcioP;
+        this.descripcionP = descripcionP;
         this.imagenP = imagenP;
     }
     
@@ -31,12 +31,12 @@ public class dtoProyectos {
         this.nombreProyecto = nombreProyecto;
     }
 
-    public String getDescripcioP() {
-        return descripcioP;
+    public String getDescripcionP() {
+        return descripcionP;
     }
 
-    public void setDescripcioP(String descripcioP) {
-        this.descripcioP = descripcioP;
+    public void setDescripcioP(String descripcionP) {
+        this.descripcionP = descripcionP;
     }
 
     public String getImagenP() {
