@@ -20,7 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/personas")
 @CrossOrigin(origins= "https://frontendporfoliocas.web.app")
 public class PersonaController {
-    @Autowired IPersonaService ipersonaService;
+    @Autowired 
+    IPersonaService ipersonaService;
     
     @GetMapping("/traer")
     public List<Persona> getPersona(){
