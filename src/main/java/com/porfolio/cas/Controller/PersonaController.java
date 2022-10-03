@@ -1,7 +1,7 @@
 package com.porfolio.cas.Controller;
 
 import com.porfolio.cas.Entity.Persona;
-import com.porfolio.cas.Interface.IPersonaService;
+import com.porfolio.cas.Service.ImpPersonaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins= "https://frontendporfoliocas.web.app")
 public class PersonaController {
     @Autowired 
-    IPersonaService ipersonaService;
+    ImpPersonaService ipersonaService;
     
     @GetMapping("/traer")
     public List<Persona> getPersona(){
