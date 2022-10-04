@@ -41,7 +41,7 @@ public class PersonaController {
     }
     
     @PreAuthorize("hasRole('ADMIN')")
-    @PutMapping("/update/{id}")
+    @PutMapping("/editar/{id}")
     public Persona editPersona(@PathVariable Long id,
                                @RequestParam("nombre") String nuevoNombre,
                                @RequestParam("apellido") String nuevoApellido,
