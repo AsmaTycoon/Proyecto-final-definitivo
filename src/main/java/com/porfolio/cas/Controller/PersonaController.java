@@ -67,7 +67,7 @@ public class PersonaController {
             return new ResponseEntity(new Mensaje("La descripción es obligatoria"), HttpStatus.BAD_REQUEST);
         }
 
-        Persona persona = new Persona(dtopersona.getNombre(), dtopersona.getApellido(), dtopersona.getDescripcion(), dtopersona.getImg(), dtopersona.getTitulo());
+        Persona persona = new Persona(dtopersona.getNombre(), dtopersona.getApellido(), dtopersona.getImg(), dtopersona.getTitulo(), dtopersona.getDescripcion());
         personaService.save(persona);
         return new ResponseEntity(new Mensaje("Persona creada correctamente"), HttpStatus.OK);
     }
