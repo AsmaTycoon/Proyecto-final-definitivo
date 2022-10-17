@@ -5,7 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
 public class Persona {
@@ -14,11 +13,9 @@ public class Persona {
     private int id;
     
     @NotNull
-    @Size(min = 1, max = 50, message = "No cumple con la longitud")
     private String nombre;
     
     @NotNull
-    @Size(min = 1, max = 50, message = "No cumple con la longitud")
     private String apellido;
     
     private String img;
